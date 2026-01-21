@@ -1,0 +1,37 @@
+{
+  "name": "ubuntu-health-vault",
+  "version": "1.0.0",
+  "description": "Blockchain-backed medical ID and patient file storage system with USSD/SMS control",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "contracts"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm install --workspace=frontend && npm install --workspace=backend && npm install --workspace=contracts",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:frontend": "npm run build --workspace=frontend",
+    "build:backend": "npm run build --workspace=backend",
+    "build:contracts": "npm run compile --workspace=contracts",
+    "build": "npm run build:contracts && npm run build:backend && npm run build:frontend",
+    "test:contracts": "npm run test --workspace=contracts",
+    "deploy:contracts": "npm run deploy --workspace=contracts"
+  },
+  "keywords": [
+    "blockchain",
+    "healthcare",
+    "DID",
+    "IPFS",
+    "USSD",
+    "South Africa"
+  ],
+  "author": "Ubuntu Health Vault",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
