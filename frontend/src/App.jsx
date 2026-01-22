@@ -5,6 +5,8 @@ import PatientDashboard from './pages/PatientDashboard'
 import DoctorDashboard from './pages/DoctorDashboard'
 import UploadRecords from './pages/UploadRecords'
 import AccessRequests from './pages/AccessRequests'
+import AdminDashboard from './pages/AdminDashboard'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="doctor" element={<DoctorDashboard />} />
         <Route path="upload" element={<UploadRecords />} />
         <Route path="access-requests" element={<AccessRequests />} />
+        <Route path="admin" element={<AdminDashboard />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )
