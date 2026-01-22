@@ -9,11 +9,14 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
     "@rainbow-me/rainbowkit": "^2.0.2",
     "@reown/appkit": "^1.8.17",
     "@reown/appkit-adapter-wagmi": "^1.8.17",
     "@tanstack/react-query": "^5.17.9",
     "axios": "^1.6.5",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "ethers": "^6.9.2",
     "framer-motion": "^10.18.0",
     "lucide-react": "^0.309.0",
@@ -21,6 +24,9 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.21.1",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "viem": "^2.7.13",
     "wagmi": "^2.5.7"
   },

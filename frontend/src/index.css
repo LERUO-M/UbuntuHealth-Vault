@@ -2,27 +2,148 @@
 @tailwind components;
 @tailwind utilities;
 
+/* UbuntuHealth Vault Design System
+   African-inspired warmth meets modern healthcare DePIN
+   All colors in HSL format
+*/
+
 @layer base {
-  body {
-    @apply bg-gray-50 text-gray-900 font-sans;
+  :root {
+    /* Core Brand Colors */
+    --background: 40 20% 98%;
+    --foreground: 200 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 25% 15%;
+
+    /* Deep Teal - Trust & Health */
+    --primary: 175 60% 30%;
+    --primary-foreground: 40 20% 98%;
+
+    /* Warm Amber - Ubuntu Warmth */
+    --secondary: 35 85% 55%;
+    --secondary-foreground: 200 25% 15%;
+
+    --muted: 40 15% 92%;
+    --muted-foreground: 200 15% 45%;
+
+    /* Accent - Vibrant Gold */
+    --accent: 42 95% 50%;
+    --accent-foreground: 200 25% 15%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 175 60% 30%;
+
+    --radius: 0.75rem;
+
+    /* Extended Palette */
+    --success: 152 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 200 25% 15%;
+
+    --info: 200 80% 50%;
+    --info-foreground: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(175 60% 30%) 0%, hsl(175 55% 40%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(35 85% 55%) 0%, hsl(42 95% 50%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(40 20% 98%) 0%, hsl(40 25% 94%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(35 85% 55% / 0.1) 0%, hsl(42 95% 50% / 0.05) 100%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(175 60% 30% / 0.08) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(42 95% 50% / 0.06) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(35 85% 55% / 0.05) 0px, transparent 50%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(200 25% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(200 25% 15% / 0.08), 0 2px 4px -2px hsl(200 25% 15% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(200 25% 15% / 0.1), 0 4px 6px -4px hsl(200 25% 15% / 0.05);
+    --shadow-glow: 0 0 40px hsl(175 60% 30% / 0.15);
+    --shadow-amber: 0 0 40px hsl(42 95% 50% / 0.2);
+
+    /* Node Network Colors */
+    --node-active: 152 60% 45%;
+    --node-pending: 38 92% 50%;
+    --node-offline: 0 0% 60%;
+    --node-line: 175 60% 30%;
+  }
+
+  .dark {
+    --background: 200 30% 8%;
+    --foreground: 40 20% 95%;
+
+    --card: 200 25% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 200 25% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 175 55% 45%;
+    --primary-foreground: 200 30% 8%;
+
+    --secondary: 35 80% 50%;
+    --secondary-foreground: 200 30% 8%;
+
+    --muted: 200 20% 18%;
+    --muted-foreground: 40 15% 65%;
+
+    --accent: 42 90% 55%;
+    --accent-foreground: 200 30% 8%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 20% 20%;
+    --input: 200 20% 20%;
+    --ring: 175 55% 45%;
+
+    --success: 152 55% 45%;
+    --warning: 38 88% 55%;
+    --info: 200 75% 55%;
+
+    --gradient-hero: linear-gradient(180deg, hsl(200 30% 8%) 0%, hsl(200 25% 12%) 100%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(175 55% 45% / 0.1) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(42 90% 55% / 0.08) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(35 80% 50% / 0.06) 0px, transparent 50%);
   }
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-ubuntu-orange hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+@layer base {
+  * {
+    @apply border-border;
   }
-  
-  .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-ubuntu-orange border-2 border-ubuntu-orange font-medium py-2 px-6 rounded-lg transition-colors duration-200;
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
-  
-  .card {
-    @apply bg-white rounded-xl shadow-md p-6 border border-gray-100;
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
   }
-  
-  .input-field {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ubuntu-orange focus:border-transparent outline-none transition-all;
+}
+
+@layer utilities {
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-secondary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-secondary);
+  }
+
+  .bg-mesh {
+    background-image: var(--gradient-mesh);
   }
 }
 
