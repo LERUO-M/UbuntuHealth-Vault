@@ -1,17 +1,32 @@
 import { Outlet, Link, useLocation } from 'react-router-dom'
-import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { useAppKit } from '@reown/appkit/react'
+import { useAccount } from 'wagmi'
 import { Shield, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Layout() {
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { open } = useAppKit()
+  const { address, isConnected } = useAccount()
 
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Patient Portal', href: '/patient' },
     { name: 'Doctor Portal', href: '/doctor' },
   ]
+
+  // Custom connect button component
+  const ConnectButton = () => (
+    <button
+      onClick={() => open()}
+      className="px-4 py-2 bg-ubuntu-orange text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
+    >
+      {isConnected
+        ? `${address?.slice(0, 6)}...${address?.slice(-4)}`
+        : 'Connect Wallet'}
+    </button>
+  )
 
   return (
     <div className="min-h-screen flex flex-col">
