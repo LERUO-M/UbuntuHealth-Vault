@@ -156,24 +156,64 @@ getAccessRequest(bytes32 requestId) returns (AccessRequest)
 - Storacha: https://web3.storage
 - BaseScan: https://basescan.org
 
-## 🎨 Color Palette
+## 🎨 Design System
+
+### Color Palette (HSL-based)
 
 ```css
-/* Ubuntu Orange */
-#E95420
+/* Primary (Teal) */
+--primary: 173 80% 40%;
+--primary-foreground: 0 0% 100%;
 
-/* Ubuntu Purple */
-#772953
+/* Secondary (Amber) */
+--secondary: 43 96% 56%;
+--secondary-foreground: 26 83% 14%;
 
-/* Ubuntu Aubergine */
-#5E2750
+/* Accent (Gold) */
+--accent: 48 96% 53%;
+--accent-foreground: 26 83% 14%;
 
-/* Warm Grey */
-#AEA79F
+/* Semantic Colors */
+--success: 142 76% 36%;
+--warning: 38 92% 50%;
+--info: 199 89% 48%;
+--destructive: 0 84% 60%;
 
-/* Success Green */
-#22c55e
+/* Neutral Colors */
+--background: 0 0% 100%;
+--foreground: 222 47% 11%;
+--card: 0 0% 100%;
+--muted: 210 40% 96%;
+--border: 214 32% 91%;
 ```
+
+### Typography
+
+```css
+/* Font Families */
+font-family: 'Inter', sans-serif;           /* Body text */
+font-family: 'Plus Jakarta Sans', sans-serif; /* Headings */
+font-family: 'Ubuntu', sans-serif;          /* Fallback */
+```
+
+### Component Variants
+
+**Button Variants:**
+- `default` - Primary teal button
+- `destructive` - Red for dangerous actions
+- `outline` - Bordered button
+- `secondary` - Amber accent button
+- `ghost` - Transparent button
+- `link` - Text link style
+- `hero` - Large primary CTA
+- `heroSecondary` - Large secondary CTA
+
+**Button Sizes:**
+- `sm` - Small (h-9)
+- `default` - Medium (h-10)
+- `lg` - Large (h-11)
+- `xl` - Extra large (h-14)
+- `icon` - Square icon button
 
 ## 🐛 Common Issues & Solutions
 

@@ -45,11 +45,14 @@
 - **Blockchain**: Ethers.js for smart contract interaction
 
 ### Frontend (React + Vite)
-- **Modern UI**: TailwindCSS with Ubuntu color scheme
-- **Web3 Integration**: RainbowKit + Wagmi for wallet connection
+- **Modern UI**: TailwindCSS with shadcn/ui component library
+- **Design System**: HSL-based color tokens with teal/amber palette
+- **Web3 Integration**: Reown AppKit + Wagmi for wallet connection
+- **Animations**: Framer Motion for smooth transitions
 - **Responsive Design**: Mobile-first approach
 - **Patient Portal**: Upload records, manage access
 - **Doctor Portal**: Request access, view records
+- **Component Architecture**: Modular sections (Hero, Network Visualization, Portals, Tech Stack)
 
 ## 📁 Project Structure
 
@@ -83,6 +86,14 @@ ubuntu-health-vault/
 ├── frontend/              # React application
 │   ├── src/
 │   │   ├── components/
+│   │   │   ├── ui/           # shadcn/ui components
+│   │   │   │   ├── button.jsx
+│   │   │   │   └── card.jsx
+│   │   │   ├── HeroSection.jsx
+│   │   │   ├── NetworkVisualization.jsx
+│   │   │   ├── WorkflowSection.jsx
+│   │   │   ├── PortalsSection.jsx
+│   │   │   ├── TechStackSection.jsx
 │   │   │   └── Layout.jsx
 │   │   ├── pages/
 │   │   │   ├── Home.jsx
@@ -90,11 +101,15 @@ ubuntu-health-vault/
 │   │   │   ├── DoctorDashboard.jsx
 │   │   │   ├── UploadRecords.jsx
 │   │   │   └── AccessRequests.jsx
+│   │   ├── lib/
+│   │   │   └── utils.js      # Utility functions (cn)
 │   │   ├── config/
 │   │   │   ├── wagmi.js
 │   │   │   └── contract.js
 │   │   ├── App.jsx
 │   │   └── main.jsx
+│   ├── tailwind.config.js    # Design system config
+│   ├── index.css             # CSS variables & tokens
 │   └── package.json
 │
 ├── scripts/               # Setup scripts
@@ -164,11 +179,17 @@ See [SETUP_GUIDE.md](SETUP_GUIDE.md) for comprehensive instructions.
 
 ## 🎨 Design Principles
 
-- **Modern & Clean**: Professional healthcare aesthetic
-- **Ubuntu Colors**: Orange (#E95420), Purple (#772953), Aubergine (#5E2750)
-- **Accessibility**: WCAG 2.1 AA compliant
+- **Modern & Clean**: Professional healthcare aesthetic with shadcn/ui components
+- **Design System**: HSL-based color tokens for dynamic theming
+  - **Primary (Teal)**: `hsl(173, 80%, 40%)` - Main brand color
+  - **Secondary (Amber)**: `hsl(43, 96%, 56%)` - Accent color
+  - **Accent (Gold)**: `hsl(48, 96%, 53%)` - Highlights
+- **Typography**: Inter and Plus Jakarta Sans fonts for modern readability
+- **Animations**: Framer Motion for smooth, professional transitions
+- **Accessibility**: WCAG 2.1 AA compliant with proper contrast ratios
 - **Mobile-First**: Responsive design for all devices
 - **User-Centric**: Simple, intuitive workflows
+- **Dark Mode Ready**: CSS variables support light/dark themes
 
 ## 🔮 Future Enhancements
 

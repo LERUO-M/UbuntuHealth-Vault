@@ -44,7 +44,7 @@ Ubuntu Health Vault empowers South African patients to own and control their med
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React + Vite, TailwindCSS, RainbowKit, Wagmi
+- **Frontend**: React + Vite, TailwindCSS, shadcn/ui, Reown AppKit, Wagmi, Framer Motion
 - **Backend**: Node.js + Express
 - **Blockchain**: Base Sepolia (Ethereum L2)
 - **Smart Contracts**: Solidity + Hardhat
@@ -59,9 +59,25 @@ ubuntu-health-vault/
 ├── frontend/          # React web application
 │   ├── src/
 │   │   ├── components/
+│   │   │   ├── ui/           # shadcn/ui components
+│   │   │   │   ├── button.jsx
+│   │   │   │   └── card.jsx
+│   │   │   ├── HeroSection.jsx
+│   │   │   ├── NetworkVisualization.jsx
+│   │   │   ├── WorkflowSection.jsx
+│   │   │   ├── PortalsSection.jsx
+│   │   │   ├── TechStackSection.jsx
+│   │   │   └── Layout.jsx
 │   │   ├── pages/
+│   │   │   ├── Home.jsx
+│   │   │   ├── PatientDashboard.jsx
+│   │   │   └── DoctorDashboard.jsx
+│   │   ├── lib/
+│   │   │   └── utils.js      # Utility functions
 │   │   ├── config/
 │   │   └── App.jsx
+│   ├── tailwind.config.js    # Tailwind + design tokens
+│   ├── index.css             # Global styles & CSS variables
 │   └── package.json
 ├── backend/           # Node.js API server
 │   ├── src/
