@@ -110,12 +110,13 @@ describe("HealthVault", function () {
         }
       });
       const requestId = healthVault.interface.parseLog(event).args[0];
-      
-      const currentTime = Math.floor(Date.now() / 1000);
-      const expiryTime = currentTime + 1; // Expires in 1 second
-      
+
+      // Get the current block timestamp
+      const currentBlock = await ethers.provider.getBlock('latest');
+      const expiryTime = currentBlock.timestamp + 86400; // Expires in 24 hours
+
       await healthVault.connect(patient).grantAccess(requestId, expiryTime);
-      
+
       // Access should be valid initially
       let hasAccess = await healthVault.hasAccess(patient.address, doctor.address);
       expect(hasAccess).to.equal(true);
