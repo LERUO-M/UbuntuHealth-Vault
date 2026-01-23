@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: ubuntu-health-vault-api
+    env: node
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: BASE_SEPOLIA_RPC_URL
+        sync: false
+      - key: HEALTH_VAULT_CONTRACT_ADDRESS
+        sync: false
+      - key: PRIVATE_KEY
+        sync: false
+      - key: W3UP_EMAIL
+        sync: false
+      - key: W3UP_SPACE_DID
+        sync: false
+      - key: AT_API_KEY
+        sync: false
+      - key: AT_USERNAME
+        sync: false
+      - key: AT_SHORTCODE
+        sync: false
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+
