@@ -1,0 +1,34 @@
+name: Keep Backend Alive
+
+on:
+  schedule:
+    # Runs every 10 minutes
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  ping-backend:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Ping Backend Health Endpoint
+        run: |
+          echo "🔄 Pinging backend to keep it alive..."
+          
+          # Replace this URL with your actual Render backend URL
+          BACKEND_URL="https://ubuntu-health-vault-api.onrender.com/health"
+          
+          response=$(curl -s -o /dev/null -w "%{http_code}" "$BACKEND_URL")
+          
+          if [ $response -eq 200 ]; then
+            echo "✅ Backend is alive and healthy (HTTP $response)"
+          else
+            echo "⚠️ Backend returned HTTP $response"
+            echo "This might be normal if the backend is waking up from sleep"
+            # Don't fail the job, just log the status
+          fi
+          
+      - name: Log Timestamp
+        run: |
+          echo "⏰ Keep-alive ping completed at $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+

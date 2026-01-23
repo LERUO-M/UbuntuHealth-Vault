@@ -248,6 +248,33 @@ If you need more:
 
 ---
 
+## 🔄 Keep Backend Alive (Recommended for Free Tier)
+
+Since Render's free tier spins down after 15 minutes of inactivity, you should set up a keep-alive ping:
+
+### Quick Setup with Cron-Job.org (Easiest)
+
+1. Go to https://cron-job.org/en/
+2. Sign up for free
+3. Create new cron job:
+   - **Title:** Keep Ubuntu Health Vault Alive
+   - **URL:** `https://your-backend.onrender.com/health`
+   - **Schedule:** Every 10 minutes (`*/10 * * * *`)
+4. Save and enable
+
+### Alternative: GitHub Actions
+
+The repo includes `.github/workflows/keep-alive.yml` that automatically pings your backend every 10 minutes.
+
+**To enable:**
+1. Update the `BACKEND_URL` in the workflow file with your actual Render URL
+2. Commit and push
+3. GitHub Actions will handle the rest (free for public repos)
+
+**See `KEEP_ALIVE_GUIDE.md` for more options and detailed instructions.**
+
+---
+
 ## 🐛 Troubleshooting
 
 ### Backend Issues
