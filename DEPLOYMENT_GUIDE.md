@@ -43,22 +43,29 @@ This guide walks you through deploying the Ubuntu Health Vault application with:
 
 In Render dashboard, go to **Environment** tab and add:
 
+**Required Variables:**
 ```bash
 NODE_ENV=production
 PORT=10000
 BASE_SEPOLIA_RPC_URL=https://sepolia.base.org
 HEALTH_VAULT_CONTRACT_ADDRESS=0x9582Ef0BDaDfca9F44D0CF9DCA4c333Dd013C160
 PRIVATE_KEY=d60f6f8e3644466ca10b6595030ad0bbdfccbc51159f79af0b98790b1a1706f9
-W3UP_EMAIL=your_email@example.com
-W3UP_SPACE_DID=your_space_did_here
-AT_API_KEY=your_africas_talking_api_key
-AT_USERNAME=your_africas_talking_username
-AT_SHORTCODE=your_ussd_shortcode
 ENCRYPTION_KEY=your_32_character_encryption_key_here_12345
 ALLOWED_ORIGINS=https://your-frontend-url.vercel.app
 ```
 
-**Important:** Update `ALLOWED_ORIGINS` after deploying frontend!
+**Optional Variables (for SMS/USSD features):**
+```bash
+AT_API_KEY=your_africas_talking_api_key
+AT_USERNAME=your_africas_talking_username
+AT_SHORTCODE=your_ussd_shortcode
+W3UP_EMAIL=your_email@example.com
+W3UP_SPACE_DID=your_space_did_here
+```
+
+**Important:**
+- Update `ALLOWED_ORIGINS` after deploying frontend!
+- SMS/USSD features will be disabled if Africa's Talking credentials are not provided
 
 ### Step 4: Deploy
 

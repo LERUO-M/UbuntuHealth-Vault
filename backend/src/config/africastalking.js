@@ -3,15 +3,27 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Initialize Africa's Talking
-const africastalking = AfricasTalking({
-  apiKey: process.env.AT_API_KEY,
-  username: process.env.AT_USERNAME
-});
+// Initialize Africa's Talking only if credentials are provided
+let africastalking, sms, ussd;
 
-// Get SMS and USSD services
-const sms = africastalking.SMS;
-const ussd = africastalking.USSD;
+if (process.env.AT_API_KEY && process.env.AT_USERNAME) {
+  try {
+    africastalking = AfricasTalking({
+      apiKey: process.env.AT_API_KEY,
+      username: process.env.AT_USERNAME
+    });
+
+    // Get SMS and USSD services
+    sms = africastalking.SMS;
+    ussd = africastalking.USSD;
+
+    console.log('✅ Africa\'s Talking initialized successfully');
+  } catch (error) {
+    console.error('⚠️ Failed to initialize Africa\'s Talking:', error.message);
+  }
+} else {
+  console.warn('⚠️ Africa\'s Talking credentials not found. SMS/USSD features will be disabled.');
+}
 
 /**
  * Send SMS notification
@@ -19,13 +31,22 @@ const ussd = africastalking.USSD;
  * @param {string} message - SMS message
  */
 async function sendSMS(phoneNumber, message) {
+  if (!sms) {
+    console.warn('SMS service not configured. Skipping SMS to:', phoneNumber);
+    return {
+      success: false,
+      message: 'SMS service not configured',
+      SMSMessageData: { Recipients: [] }
+    };
+  }
+
   try {
     const result = await sms.send({
       to: [phoneNumber],
       message: message,
       from: process.env.AT_SHORTCODE
     });
-    
+
     console.log('SMS sent:', result);
     return result;
   } catch (error) {
